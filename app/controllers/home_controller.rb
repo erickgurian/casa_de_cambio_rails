@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-  end 
+    @transactions = Transaction.all
+  end
 
 end
