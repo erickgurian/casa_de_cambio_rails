@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new
   end
 
+
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
@@ -13,8 +14,24 @@ class TransactionsController < ApplicationController
     end
   end
 
+
   def show
     @transaction = Transaction.find(params[:id])
+  end
+
+
+  def edit
+      @transaction = Transaction.find(params[:id])
+  end
+
+
+  def update
+    @transaction = Transaction.find(params[:id])
+    if @transaction.update(transaction_params)
+      redirect_to @transaction 
+    else
+      render action: :edit
+    end
   end
 
 

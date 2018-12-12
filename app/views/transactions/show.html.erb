@@ -19,4 +19,5 @@
 <h3>Total</h3>
   <p><%= "$ #{format("%.2f", @transaction.total)}" %></p>
 
+<%= link_to 'Editar', edit_transaction_path %>
 <%= link_to 'Voltar', root_path %>
