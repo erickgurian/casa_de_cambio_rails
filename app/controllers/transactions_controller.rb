@@ -1,6 +1,8 @@
 class TransactionsController < ApplicationController
 
   def new
+    return create if transaction_params
+    
     @transaction = Transaction.new
   end
 
@@ -11,7 +13,7 @@ class TransactionsController < ApplicationController
       redirect_to @transaction
     else
       flash[:alert] = 'Você deve informar todos os dados da transação'
-      redirect_to action: 'new'
+      render :new
     end
   end
 
@@ -22,7 +24,8 @@ class TransactionsController < ApplicationController
 
 
   def edit
-      @transaction = Transaction.find(params[:id])
+    return create if transaction_params
+    @transaction = Transaction.find(params[:id])
   end
 
 
@@ -47,6 +50,8 @@ class TransactionsController < ApplicationController
 
   private
   def transaction_params
+    return false if params[:transaction].nil? || params[:transaction].empty?
+
     params.require(:transaction).permit(:amount, :currency, :quotation, :transaction_type)
   end
 
