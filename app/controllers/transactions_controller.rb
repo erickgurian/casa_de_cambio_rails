@@ -28,10 +28,18 @@ class TransactionsController < ApplicationController
   def update
     @transaction = Transaction.find(params[:id])
     if @transaction.update(transaction_params)
-      redirect_to @transaction 
+      redirect_to @transaction
     else
       render action: :edit
     end
+  end
+
+
+  def destroy
+    transaction = Transaction.find(params[:id])
+    transaction.destroy
+    flash[:notice] = 'Transação apagada com sucesso!'
+    redirect_to root_path
   end
 
 
