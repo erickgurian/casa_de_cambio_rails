@@ -10,7 +10,8 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to @transaction
     else
-      render :new
+      flash[:alert] = 'Você deve informar todos os dados da transação'
+      redirect_to action: 'new'
     end
   end
 
@@ -30,7 +31,8 @@ class TransactionsController < ApplicationController
     if @transaction.update(transaction_params)
       redirect_to @transaction
     else
-      render action: :edit
+      flash[:alert] = 'Você deve informar todos os dados da transação'
+      render :edit
     end
   end
 
@@ -38,7 +40,8 @@ class TransactionsController < ApplicationController
   def destroy
     transaction = Transaction.find(params[:id])
     transaction.destroy
-    redirect_to root_path, notice: 'Transação apagada com sucesso!'
+    flash[:notice] = 'Transação apagada com sucesso!'
+    redirect_to root_path
   end
 
 
