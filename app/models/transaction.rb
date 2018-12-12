@@ -2,7 +2,7 @@ class Transaction < ApplicationRecord
 
   validates :amount, :currency, :quotation, :transaction_type, presence: true
 
- def en_to_pt(word)
+ def translate_to_pt(word)
    return 'Dólar' if word == 'dollar'
    return 'Real' if word == 'real'
    return 'Venda' if word == 'sell'

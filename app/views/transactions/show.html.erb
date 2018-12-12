@@ -5,13 +5,13 @@
  <p><%= format("%.2f", @transaction.amount) %> </p>
 
 <h3>Moeda</h3>
-  <p><%= @transaction.en_to_pt(@transaction.currency) %></p>
+  <p><%= @transaction.translate_to_pt(@transaction.currency) %></p>
 
 <h3>Cotação</h3>
   <p><%= "$ #{format("%.2f", @transaction.quotation)}" %></p>
 
 <h3>Tipo</h3>
-  <p><%= @transaction.en_to_pt(@transaction.transaction_type)%></p>
+  <p><%= @transaction.translate_to_pt(@transaction.transaction_type)%></p>
 
 <h3>Data</h3>
   <p><%= @transaction.created_at.strftime('%d/%m/%Y') %></p>

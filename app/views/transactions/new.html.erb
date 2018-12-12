@@ -1,0 +1,20 @@
+<% if @transaction.errors.any? %>
+  <div id="error_explanation">
+      <%= 'Você deve informar todos os dados da transação' %>
+  </div>
+<% end %>
+
+<%= form_for @transaction do |f| %>
+  <%= f.label :amount, 'Quantidade' %>
+  <%= f.text_field :amount %>
+  <%= f.label :currency, 'Moeda'%>
+  <%= f.select :currency, options_for_select([ ['Dólar', 'dollar'],
+                                               ['Real', 'real'] ]) %>
+  <%= f.label :quotation, 'Cotação' %>
+  <%= f.text_field :quotation %>
+  <%= f.label :transaction_type, 'Tipo' %>
+  <%= f.select :transaction_type, options_for_select([ ['Venda', 'sell'],
+                                                      ['Compra', 'buy'] ]) %>
+
+  <%= f.submit 'Cadastrar' %>
+<% end %>
