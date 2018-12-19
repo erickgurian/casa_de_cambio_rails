@@ -2,7 +2,6 @@ class TransactionsController < ApplicationController
 
   def new
     return create if transaction_params
-
     @transaction = Transaction.new
     @users = User.all
   end
