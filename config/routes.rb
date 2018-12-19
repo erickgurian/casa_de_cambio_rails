@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'home#index'
   resources :transactions
+  resources :users
   post '/transactions/new'
   patch '/transactions/:id/edit', to: 'transactions#update'
 end
