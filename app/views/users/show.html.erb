@@ -4,5 +4,15 @@
 <%= @user.email %>
 <p>CPF</p>
 <%= @user.cpf %>
+<p>Endereço</p>
+
+<% if @user.address == nil %>
+  <p>Este usuário não tem um endereço cadastrado</p>
+<% else %>
+  <%= @user.address.street %>
+  <%= @user.address.neighbourhood %>
+  <%= @user.address.city_and_state %>
+  <%= @user.address.postal_code %>
+<% end %>
 
 <%= link_to 'Editar', edit_user_path(@user) %>

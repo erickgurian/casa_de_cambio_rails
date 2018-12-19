@@ -1,3 +1,7 @@
-<%= @users.each do |user| %>
-<p> <%= link_to user.id, user%> </p>
+<% if @users.empty? %>
+  <p><%= 'Nenhum usuário cadastrado' %></p>
+<% end %>
+
+<% @users.each do |user| %>
+<p> <%= link_to user.id, user %> </p>
 <% end %>
