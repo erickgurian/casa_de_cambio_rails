@@ -1,5 +1,7 @@
 class Transaction < ApplicationRecord
 
+  belongs_to :user
+
   validates :amount, :currency, :quotation, :transaction_type, presence: true
 
  def translate_to_pt(word)
