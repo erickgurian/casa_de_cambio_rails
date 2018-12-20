@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   has_many :transactions
-  has_one :address
-  validates :email, :name, :cpf, presence: true
+  belongs_to :address, optional: true
   
+  validates :email, :name, :cpf, presence: true
+
 end

@@ -2,12 +2,10 @@ class UsersController <  ApplicationController
 
   def index
     @users = User.all
-    @address = Address.all
   end
 
   def new
     @user = User.new
-    @address = Address.all
   end
 
 
@@ -17,7 +15,6 @@ class UsersController <  ApplicationController
       redirect_to @user
     else
       flash[:alert] = 'Você deve informar todos os dados do usuário'
-      @address = Address.all
       render :new
     end
   end

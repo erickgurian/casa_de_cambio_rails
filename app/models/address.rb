@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
 
-  belongs_to :user
+  has_one :user
 
   validates :street, :city, :state, :neighbourhood, :postal_code, presence: true
 
