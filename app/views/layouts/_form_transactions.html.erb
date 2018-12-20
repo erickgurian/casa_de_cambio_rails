@@ -1,0 +1,47 @@
+<% if @transaction.errors.any? %>
+  <p style="color: red;"><strong>Você deve informar todos os dados da transação</strong></p>
+  <% @transaction.errors.full_messages.each do |message| %>
+    <div class="ls-alert-danger">
+      <%= message %>
+    </div>
+  <% end %>
+<%end %>
+
+<div class="ls-box-group">
+  <div class="ls-box ls-md-space">
+    <div class="row">
+      <div class="col-md-2 ls-txt-center">
+      <span class="ls-ico-alone ls-ico-stats"></span>
+      </div>
+    <div class="col-md-10">
+        <%= form_for @transaction do |f| %>
+
+        <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :amount, 'Quantidade: '%></b></p>
+        <p style="text-align: center;"><%= f.text_field :amount, placeholder: 'Valor da transação', class: 'ls-field-lg' %></p>
+        <br>
+        <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :quotation, 'Cotação: ' %></b></p>
+        <p style="text-align: center;"><%= f.text_field :quotation, placeholder: 'Preço do dólar', class: 'ls-field-lg' %></p>
+        <br>
+        <div class="ls-form ls-form-inline row">
+          <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :currency, 'Moeda: '%></b>
+          <div class="ls-custom-select ls-field-lg">
+            <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']], class: "ls-select"%>
+          </div></p>
+        <br>
+          <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :transaction_type, 'Tipo: ' %></b>
+          <div class="ls-custom-select ls-field-lg">
+            <%= f.select :transaction_type, [['Venda', 'sell'], ['Compra', 'buy']] %>
+          </div></p>
+        <br>
+          <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :user_id, 'Usuário' %></b>
+          <div class="ls-custom-select ls-field-lg">
+            <%= f.collection_select :user_id, @users, :id, :email %>
+          </div></p>
+        </div>
+        <br>
+        <p style="text-align: center;"><%= f.submit text, class: 'ls-btn ls-btn-lg ls-color-success' %></p>
+        <% end %>
+  </div>
+  </div>
+</div>
+</div>

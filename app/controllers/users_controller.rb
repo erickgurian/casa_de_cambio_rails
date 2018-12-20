@@ -14,7 +14,6 @@ class UsersController <  ApplicationController
     if @user.save
       redirect_to @user
     else
-      flash[:alert] = 'Você deve informar todos os dados do usuário'
       render :new
     end
   end
@@ -35,7 +34,6 @@ class UsersController <  ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      flash[:alert] = 'Você deve informar todos os dados do usuário'
       render :edit
     end
   end

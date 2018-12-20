@@ -1,16 +1,1 @@
-<%= form_for @transaction, :url => {:action => :edit}  do |f| %>
-  <p><%= f.label :amount, 'Quantidade: ' %>
-  <%= f.text_field :amount %></p>
-  <p><%= f.label :currency, 'Moeda: '%>
-  <%= f.select :currency, options_for_select([ ['Dólar', 'dollar'],
-                                               ['Real', 'real'] ]) %></p>
-  <p><%= f.label :quotation, 'Cotação: ' %>
-  <%= f.text_field :quotation %></p>
-  <p><%= f.label :transaction_type, 'Tipo: ' %>
-  <%= f.select :transaction_type, options_for_select([ ['Venda', 'sell'],
-                                                      ['Compra', 'buy'] ]) %></p>
-  <p><%= f.label :user_id, 'Usuário' %>
-  <%= f.collection_select :user_id, @users, :id, :email %></p>
-
-  <p><%= f.submit 'Editar' %></p>
-<% end %>
+<%= render partial: 'layouts/form_transactions', locals: { text: 'Editar' } %>

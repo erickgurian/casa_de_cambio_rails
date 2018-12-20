@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :transactions
   resources :users
-  post '/transactions/new'
-  patch '/transactions/:id/edit', to: 'transactions#update'
+
 end

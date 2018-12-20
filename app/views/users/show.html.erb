@@ -1,18 +1,36 @@
-<h3><%= @user.name %></h3>
 
-<p>E-mail</p>
-<%= @user.email %>
-<p>CPF</p>
-<%= @user.cpf %>
-<p>Endereço</p>
+<div class="ls-box-group">
+  <div class="ls-box ls-md-space">
+    <div class="row">
+      <div class="col-md-2 ls-txt-center">
+      <span class="ls-ico-alone ls-ico-user"></span>
+      </div>
+    <div class="col-md-10">
 
-<% if @user.address == nil %>
-  <p>Este usuário não tem um endereço cadastrado</p>
-<% else %>
-  <%= @user.address.street %>
-  <%= @user.address.neighbourhood %>
-  <%= @user.address.city_and_state %>
-  <%= @user.address.postal_code %>
-<% end %>
+      <h3 style="font-size: 30px;"><strong><%= @user.name %></strong></h3>
+      <br>
+      <ul>
+      <li><p style="font-size: 20px;">E-mail</p>
+      <%= @user.email %></li><br>
+    <li><p style="font-size: 20px;">CPF</p>
+      <%= @user.cpf %></li><br>
+    <li><p style="font-size: 20px;">Endereço</p>
 
-<%= link_to 'Editar', edit_user_path(@user) %>
+      <% if @user.address == nil %>
+        <p>Este usuário não tem um endereço cadastrado</p>
+      <% else %>
+      <ul>
+        <li><%= @user.address.street %></li>
+        <li><%= @user.address.neighbourhood %></li>
+        <li><%= @user.address.city_and_state %></li>
+        <li><%= @user.address.postal_code %></li>
+      </ul>
+      <% end %></li>
+      </ul>
+      <%= link_to 'Editar', edit_user_path(@user), class: 'ls-btn ls-btn-lg ls-color-success' %>
+      <% #link_to 'Cadastrar Endereço', new_adderess_path, class: 'ls-btn ls-btn-lg ls-color-success' %>
+      <%= link_to 'Voltar', root_path, class: 'ls-btn ls-btn-lg ' %>
+    </div>
+  </div>
+  </div>
+</div>

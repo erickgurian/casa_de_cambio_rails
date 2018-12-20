@@ -1,44 +1,28 @@
-<h1>Bem-vindo ao sistema de trocas de moedas</h1>
+<h1 class="ls-title-intro ls-ico-home">Bem-vindo ao sistema de trocas de moedas</h1>
 
-<%= form_tag "/", method: "get" do %>
-    <%= label_tag(:currency, 'Filtro por moeda') %>
-    <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']]) %>
-    <%= submit_tag "Filtrar" %>
-<% end %>
+
+<div class="ls-box-filter">
+  <form action="" class="ls-form ls-form-inline">
+    <label class="ls-label col-md-4 col-sm-4">
+      <%= form_tag "/", method: "get" do %>
+      <b class="ls-label-text"> <%= label_tag(:currency, 'Filtro por moeda')%> </b>
+      <div class="ls-custom-select">
+        <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']],) %>
+      </div>
+    </label>
+    <div class="ls-actions-btn">
+      <%= submit_tag "Filtrar", class: "ls-btn" %>
+    </div>
+    <% end %>
+  </form>
+</div>
 
 <% if @transactions.empty? %>
- <p>Você ainda não possui transações cadastradas.</p>
+  <p style="font-size: 30px; text-align: center;"><strong>Você ainda não possui transações cadastradas.</strong></p>
 
 <% else %>
-<table>
-  <thead>
-    <tr>
-      <th>Identificador</th>
-      <th>Quantidade</th>
-      <th>Moeda</th>
-      <th>Tipo</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% total_added = 0 %>
-    <% @transactions.each do |transaction| %>
-    <% total_added += transaction.total %>
-      <tr>
-        <td><%= link_to transaction.id, transaction %></td>
-        <td><%= format("%.2f", transaction.amount) %></td>
-        <td><%= transaction.translate_to_pt(transaction.currency) %></td>
-        <td><%= transaction.translate_to_pt(transaction.transaction_type)%></td>
-        <td><%= "$ #{format("%.2f", transaction.total)}" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<p>Total agregado</p>
-<p><%= "$ #{format("%.2f", total_added)}" %></p>
+  <%= render partial: 'layouts/index' %>
+
 <% end %>
 
-<%= link_to 'Ver todas', transactions_path %>
-<%= link_to 'Usuários', users_path %>
-<%= link_to 'Registrar transação', new_transaction_path %>
-<%= link_to 'Cadastrar usuário', new_user_path %>
+<%= link_to 'Ver todas', transactions_path, class: "ls-btn ls-btn-lg ls-btn-block" %>

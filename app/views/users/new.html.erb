@@ -1,11 +1,1 @@
-<%= form_for @user do |f| %>
-  <p><%= f.label :name, 'Nome' %>
-  <%= f.text_field :name %></p>
-  <p><%= f.label :email, 'E-mail' %>
-  <%= f.text_field :email %></p>
-  <p><%= f.label :cpf, 'CPF' %>
-  <%= f.text_field :cpf %></p>
-
-  <p><%= f.submit 'Cadastrar' %></p>
-
-<% end %>
+<%= render partial: 'layouts/form_users', locals: { text: 'Cadastrar' } %>

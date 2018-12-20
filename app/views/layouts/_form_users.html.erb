@@ -1,0 +1,34 @@
+<% if @user.errors.any? %>
+  <p style="color: red;"><strong>Você deve informar todos os dados do usuário</strong></p>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="ls-alert-danger">
+      <%= message %>
+    </div>
+  <% end %>
+<%end %>
+
+<div class="ls-box-group">
+  <div class="ls-box ls-md-space">
+    <div class="row">
+      <div class="col-md-2 ls-txt-center">
+      <span class="ls-ico-alone ls-ico-user-add"></span>
+      </div>
+    <div class="col-md-10">
+
+         <%= form_for @user do |f| %>
+
+         <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :name, 'Nome' %></b></p>
+         <p style="text-align: center;"><%= f.text_field :name, placeholder: "Nome e sobrenome", class: 'ls-field-lg' %></p>
+         <br>
+         <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :email, 'E-mail' %></b></p>
+         <p style="text-align: center;"><%= f.text_field :email, placeholder: "Escreva seu email", class: 'ls-field-lg' %></p>
+         <br>
+         <p style="text-align: center; font-size: 15px;"><b class="ls-label-text"><%= f.label :cpf, 'CPF' %></b></p>
+         <p style="text-align: center;"><%= f.text_field :cpf, placeholder: "xxx.xxx.xxx-xx",class: 'ls-field-lg' %></p>
+         <br>
+         <p style="text-align: center;"><%= f.submit text, class: 'ls-btn ls-btn-lg ls-color-success' %></p>
+         <% end %>
+    </div>
+    </div>
+  </div>
+</div>
