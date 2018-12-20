@@ -21,7 +21,9 @@
     </tr>
   </thead>
   <tbody>
+    <% total_added = 0 %>
     <% @transactions.each do |transaction| %>
+    <% total_added += transaction.total %>
       <tr>
         <td><%= link_to transaction.id, transaction %></td>
         <td><%= format("%.2f", transaction.amount) %></td>
@@ -32,6 +34,8 @@
     <% end %>
   </tbody>
 </table>
+<p>Total agregado</p>
+<p><%= "$ #{format("%.2f", total_added)}" %></p>
 <% end %>
 
 <%= link_to 'Ver todas', transactions_path %>
